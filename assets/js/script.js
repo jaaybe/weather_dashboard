@@ -108,10 +108,16 @@ function searchWeather() {
         bodyDate.classList.add('card-title', 'bg-primary');
         bodyDate.textContent = fiveDayDate.format("MM/DD/YYYY")
         
-        var fiveDayIconUrl = "http://openweathermap.org/img/wn/" + fiveDayResponse.list[i].weather[0].icon + '@2x.png';
+        // var fiveDayIconUrl = "http://openweathermap.org/img/wn/" + fiveDayResponse.list[i].weather[0].icon + '@2x.png';
         var bodyImg = document.createElement("IMG");
         bodyImg.classList.add('card-img');
-        bodyImg.setAttribute('scr', fiveDayIconUrl);
+        // bodyImg.setAttribute('scr', fiveDayIconUrl);
+        bodyImg.setAttribute(
+          'src',
+          'https://openweathermap.org/img/wn/' +
+              fiveDayResponse.list[i].weather[0].icon +
+              '@2x.png'
+      )
          
 
         var fahrenheit = (fiveDayResponse.list[i].main.temp - 273.15) * (9 / 5) + 32;
