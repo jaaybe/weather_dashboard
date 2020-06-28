@@ -19,22 +19,40 @@
                 <div class="input-group mb-3">
                     <label class="labelCity">Search for City:</label>
                     <input type="text" id="inputCity" class="form-control inputCity" placeholder="type City here">
-                        <div class="input-group-append">
-                            <span class="input-group-text btnContainer" id="btn"><i
-                                    class="fas fa-search btn"></i></span>
-                        </div>
+                    <div class="input-group-append">
+                        <span class="input-group-text btnContainer"><i class="fas fa-search btn" id="btn"></i></span>
+                    </div>
                 </div>
-                <div>
-                    CONTAINER FOR SAVED CITIES
+                <div class="savedCityContainer">
+                    <ul id="savedCityContainer" class="list-group savedCityListItem">
+                        <li class="list-group-item">TEST</li>
+                    </ul>
                 </div>
             </div>
 
-            <div class="col-6 rightColumn">.col-6<br>Subsequent columns continue along the new line.</div>
+            <div class="col-6 rightColumn">
+                <div id="dayForecast" class="dayForecast">
+                    <div>
+                        <h2 id="dayForecastHeader" class="dayForecastHeader">CITY, DATE, ICON PLACEHOLDER</h2>
+                    </div>
+                    <div>
+                        <ul id="dayForecastList" class="list-group dayForecastList">
+                            <li id="temperature" class="list-group-item dayForecastLi">Temperature:</li>
+                            <li id="humidity" class="list-group-item dayForecastLi">Humidity:</li>
+                            <li id="wind" class="list-group-item dayForecastLi">Wind Speed:</li>
+                            <li id="uv" class="list-group-item dayForecastLi uvColor">UV Index:</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="container">
+                    <div id="fiveDayForecast" class="d-flex fiveDayForecast">
+
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
-
-
-    <script src="./assets/js/script.js"></script>
+   
     <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
         integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
         crossorigin="anonymous"></script>
@@ -45,6 +63,8 @@
         integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
         crossorigin="anonymous"></script>
     <script src="https://kit.fontawesome.com/7e034ce0e4.js" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.25.1/moment.min.js"></script>
+    <script src="./assets/js/script.js"></script>
 </body>
 
 </html>

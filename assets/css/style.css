@@ -45,3 +45,32 @@ body {
       border: 1px, solid #ced4da;
       background-color: white;
   }
+
+  .dayForecast {
+    border: 1px solid lightgrey;
+    margin: 5px;
+    padding: 20px 10px;
+  }
+
+  .dayForecastLi {
+      border: 0;
+  }
+
+  .fiveDayForecast {
+    margin: 5px;
+    padding: 20px 10px;
+
+  } 
+
+  .savedCityListItem {
+      color: grey;
+
+  }
+
+  .fiveDayForecastItem {
+      background-color: lightcoral;
+  }
+
+  .uvColor {
+      width: fit-content;
+  }
