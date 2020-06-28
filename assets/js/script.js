@@ -155,11 +155,17 @@ function renderCities() {
   savedCityContainerEl.innerHTML = "";
   for (var i = 0; i < cities.length; i++) {
     var savedCityListItem = document.createElement("LI");
+    savedCityListItem.addEventListener('click', e=> {
+      console.log(e.target.tagName)
+      console.log(e.target.innerText)
+      if (e.target.tagName == 'LI') {
+        searchWeather(e.target.innerText)
+    }
+    })
     savedCityListItem.className = "list-group-item savedCityListItem";
     savedCityListItem.innerText = cities[i];
     savedCityContainerEl.appendChild(savedCityListItem);
   }
-
 };
 
 renderCities();
@@ -168,6 +174,6 @@ btnEl.addEventListener("click", function () {
   searchWeather();
 });
 
-savedCityContainerEl.addEventListener('click', function() {
-  console.log('this works');
-})
+// savedCityContainerEl.addEventListener('click', function() {
+//   console.log('this works');
+// })
