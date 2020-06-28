@@ -11,11 +11,8 @@ var fiveDayForecastEl = document.getElementById("fiveDayForecast");
 var cityList = JSON.parse(localStorage.getItem('cities')) || [];
 
 function storeCities() {
-  var inputCity = document.getElementsByClassName('savedCityListItem');
-  console.log(inputCity);
-
-  // var cityToBeAdded = inputCityEl.innerText;
-  // console.log(cityToBeAdded);
+  var cityToBeAdded = inputCityEl.innerText;
+  console.log(cityToBeAdded);
   // localStorage.setItem("cities", JSON.stringify(cityList));
 }
 
