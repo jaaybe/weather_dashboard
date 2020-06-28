@@ -4,17 +4,23 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
         integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
     <link rel="stylesheet" href="./assets/css/style.css" type="text/css" />
+
     <title>Weather Dashboard</title>
 </head>
 
 <body>
+    <header class="container-fluid text-center text-white bg-dark p-2">
+        <h1>Weather Dashboard</h1>
+      </header>
 
-    <div class="container">
+    <div class="container-fluid">
         <div class="row">
-            <div class="col-4 leftColumn">
+            <div class="col-lg-3 bg-light">
 
                 <div class="input-group mb-3">
                     <label class="labelCity">Search for City:</label>
@@ -30,7 +36,7 @@
                 </div>
             </div>
 
-            <div class="col-6 rightColumn">
+            <div class="col-lg-9">
                 <div id="dayForecast" class="dayForecast">
                     <div>
                         <h2 id="dayForecastHeader" class="dayForecastHeader">CITY, DATE, ICON PLACEHOLDER</h2>
@@ -45,6 +51,7 @@
                     </div>
                 </div>
                 <div class="container">
+                    <h3>5-Day Forecast:</h3>
                     <div id="fiveDayForecast" class="d-flex fiveDayForecast">
 
                     </div>

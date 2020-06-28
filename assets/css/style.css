@@ -1,6 +1,6 @@
-body {
+/* body {
     background-color: black;
-}
+} */
 
 .selector-for-some-widget {
     box-sizing: content-box;
@@ -57,8 +57,9 @@ body {
   }
 
   .fiveDayForecast {
-    margin: 5px;
-    padding: 20px 10px;
+    /* margin: 5px;
+    padding: 20px 10px; */
+    display: flow-root;
 
   } 
 
@@ -67,9 +68,9 @@ body {
 
   }
 
-  .fiveDayForecastItem {
+  /* .fiveDayForecastItem {
       background-color: lightcoral;
-  }
+  } */
 
   .uvColor {
       width: fit-content;

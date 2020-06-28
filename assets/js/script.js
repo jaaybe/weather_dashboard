@@ -48,8 +48,6 @@ function searchWeather() {
 
         })
 
-      // console.log(response);
-
       if (cityList.indexOf(inputCity) === -1) {
         cityList.push(inputCity);
       }
@@ -57,8 +55,19 @@ function searchWeather() {
       // convert dt to date via moment.js
       var convertedDate = moment.unix(response.dt)
 
+      // get weather icon
+      console.log(response.weather[0].icon);
+      var weatherIconUrl = "http://openweathermap.org/img/wn/" + response.weather[0].icon + '@2x.png';
+      console.log(weatherIconUrl);
+      var weatherIcon = document.createElement("IMG");
+      weatherIcon.id = "weatherIcon";
+      weatherIcon.src = weatherIconUrl;
+      console.log(weatherIcon);
+      
+
       // Day Forecast - header - cityList, Date, Icon
-      dayForecastHeaderEl.innerText = response.name + " " + convertedDate.format("MM/DD/YYYY") + " " + response.weather[0].icon;
+      dayForecastHeaderEl.innerText = response.name + " " + convertedDate.format("MM/DD/YYYY");
+      dayForecastHeaderEl.appendChild(weatherIcon);
 
       // Day Forecast - details
       temperatureEl.innerText = "Temperature: " + response.main.temp + '°F';
@@ -82,14 +91,48 @@ function searchWeather() {
     .then(function (fiveDayResponse) {
       fiveDayForecastEl.innerHTML = ""
       for (var i = 0; i < fiveDayResponse.list.length; i += 8) {
-        var fiveDayForecastItem = document.createElement("DIV");
-        fiveDayForecastItem.className = "d-inline-flex fiveDayForecastItem"
+        
+        var fiveDayForecastCol = document.createElement("DIV");
+        fiveDayForecastCol.className = "col-md-2"
+
+        var fiveDayForecastCard = document.createElement("DIV");
+        fiveDayForecastCard.classList.add('card', 'text-white', 'bg-primary', 'mb-3');
+        // fiveDayForecastCard.style.add('max-width: 18rem');
+
+        var bodyEl = document.createElement("DIV");
+        bodyEl.classList.add('card', 'p-2', 'bg-primary');
+
         var fiveDayDate = moment.unix(fiveDayResponse.list[i].dt);
+        
+        var bodyDate = document.createElement("H5");
+        bodyDate.classList.add('card-title', 'bg-primary');
+        bodyDate.textContent = fiveDayDate.format("MM/DD/YYYY")
+        
+        var fiveDayIconUrl = "http://openweathermap.org/img/wn/" + fiveDayResponse.list[i].weather[0].icon + '@2x.png';
+        var bodyImg = document.createElement("IMG");
+        bodyImg.classList.add('card-img');
+        bodyImg.setAttribute('scr', fiveDayIconUrl);
+         
 
         var fahrenheit = (fiveDayResponse.list[i].main.temp - 273.15) * (9 / 5) + 32;
 
-        fiveDayForecastItem.innerText = fiveDayDate.format("MM/DD/YYYY") + "\n" + fiveDayResponse.list[i].weather[0].icon + "\n" + "Temp: " + fahrenheit.toFixed(2) + "\n" + "Humidity: " + fiveDayResponse.list[i].main.humidity + "%"
-        fiveDayForecastEl.appendChild(fiveDayForecastItem);
+        var bodyTemp = document.createElement("P");
+        bodyTemp.classList.add('card-text', 'bg-primary');
+        bodyTemp.textContent = "Temp: " + fahrenheit.toFixed(2) + '°F'
+
+        var bodyHum = document.createElement("P");
+        bodyHum.classList.add('card-text', 'bg-primary');
+        bodyHum.textContent = 'Humidity: ' + fiveDayResponse.list[i].main.humidity + "%"
+
+        // fiveDayForecastItem.innerText =  + "\n" + fiveDayResponse.list[i].weather[0].icon + "\n" + "Temp: " +  + "\n" + "Humidity: " + fiveDayResponse.list[i].main.humidity + "%"
+
+        fiveDayForecastCol.appendChild(fiveDayForecastCard);
+        fiveDayForecastCard.appendChild(bodyEl);
+        bodyEl.appendChild(bodyDate);
+        bodyEl.appendChild(bodyImg);
+        bodyEl.appendChild(bodyTemp);
+        bodyEl.appendChild(bodyHum);
+        fiveDayForecastEl.appendChild(fiveDayForecastCol);
       }
       console.log(fiveDayResponse)
     })
@@ -118,3 +161,7 @@ renderCities();
 btnEl.addEventListener("click", function () {
   searchWeather();
 });
+
+savedCityContainerEl.addEventListener('click', function() {
+  console.log('this works');
+})
