@@ -1,3 +1,4 @@
+var inputCityEl = document.getElementById('inputCity');
 var btnEl = document.getElementById("btn");
 var savedCityContainerEl = document.getElementById("savedCityContainer");
 var dayForecastListEl = document.getElementById("dayForecastList");
@@ -9,8 +10,38 @@ var uvEl = document.getElementById("uv");
 var fiveDayForecastEl = document.getElementById("fiveDayForecast");
 var cityList = JSON.parse(localStorage.getItem('cities')) || [];
 
+function storeCities() {
+  var inputCity = document.getElementsByClassName('savedCityListItem');
+  console.log(inputCity);
+
+  // var cityToBeAdded = inputCityEl.innerText;
+  // console.log(cityToBeAdded);
+  // localStorage.setItem("cities", JSON.stringify(cityList));
+}
+
+function renderCities() {
+  var cities = JSON.parse(localStorage.getItem("cities")) || [];
+  savedCityContainerEl.innerHTML = "";
+  for (var i = 0; i < cities.length; i++) {
+    var savedCityListItem = document.createElement("LI");
+    savedCityListItem.addEventListener('click', e=> {
+      console.log(e.target.tagName)
+      if (e.target.tagName == 'LI') {
+        console.log(e.target.innerText)
+        searchWeather(e.target.innerText)
+    }
+    })
+    savedCityListItem.className = "list-group-item savedCityListItem";
+    savedCityListItem.innerText = cities[i];
+    savedCityContainerEl.appendChild(savedCityListItem);
+  }
+};
+
+renderCities();
+
 function searchWeather() {
-  var inputCity = document.getElementById('inputCity').value;
+  // var inputCity = document.getElementsByClassName('savedCityListItem');
+  // console.log(inputCity);
 
   // today's forecast fetch
   fetch(
@@ -75,10 +106,11 @@ function searchWeather() {
       windEl.innerText = "Wind Speed: " + response.wind.speed + "MPH";
 
       dayForecastListEl.appendChild(humidityEl);
-      localStorage.setItem("cities", JSON.stringify(cityList));
-      // event.preventDefault(); - do I need this? 
+
       displayDayForecast(response);
     });
+
+// **********************************************************************************
 
   // 5 day forecast fetch
   fetch(
@@ -150,30 +182,11 @@ function displayDayForecast(response) {
 
 };
 
-function renderCities() {
-  var cities = JSON.parse(localStorage.getItem("cities")) || [];
-  savedCityContainerEl.innerHTML = "";
-  for (var i = 0; i < cities.length; i++) {
-    var savedCityListItem = document.createElement("LI");
-    savedCityListItem.addEventListener('click', e=> {
-      console.log(e.target.tagName)
-      console.log(e.target.innerText)
-      if (e.target.tagName == 'LI') {
-        searchWeather(e.target.innerText)
-    }
-    })
-    savedCityListItem.className = "list-group-item savedCityListItem";
-    savedCityListItem.innerText = cities[i];
-    savedCityContainerEl.appendChild(savedCityListItem);
-  }
-};
-
-renderCities();
-
 btnEl.addEventListener("click", function () {
-  searchWeather();
+  storeCities();
+  // searchWeather();
 });
 
-// savedCityContainerEl.addEventListener('click', function() {
-//   console.log('this works');
-// })
+savedCityContainerEl.addEventListener('click', function() {
+  console.log('this works');
+})
