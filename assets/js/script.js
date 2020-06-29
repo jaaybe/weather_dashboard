@@ -11,9 +11,15 @@ var fiveDayForecastEl = document.getElementById("fiveDayForecast");
 var cityList = JSON.parse(localStorage.getItem('cities')) || [];
 
 function storeCities() {
-  var cityToBeAdded = inputCityEl.innerText;
+  var cityToBeAdded = inputCityEl.value;
   console.log(cityToBeAdded);
-  // localStorage.setItem("cities", JSON.stringify(cityList));
+
+  cityList.push(cityToBeAdded);
+  if (cityList.indexOf(cityToBeAdded) !== -1) {
+    localStorage.setItem("cities", JSON.stringify(cityList));
+  }
+  renderCities();
+  searchWeather(cityToBeAdded);
 }
 
 function renderCities() {
@@ -36,7 +42,7 @@ function renderCities() {
 
 renderCities();
 
-function searchWeather() {
+function searchWeather(inputCity) {
   // var inputCity = document.getElementsByClassName('savedCityListItem');
   // console.log(inputCity);
 
@@ -184,6 +190,6 @@ btnEl.addEventListener("click", function () {
   // searchWeather();
 });
 
-savedCityContainerEl.addEventListener('click', function() {
-  console.log('this works');
-})
+// savedCityContainerEl.addEventListener('click', function() {
+//   console.log('this works');
+// })
