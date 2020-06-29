@@ -2,7 +2,7 @@
 
 [JB BLOT - WEATHER DASHBOARD](https://github.com/jaaybe/weather_dashboard)
 
-![screenshot](./Screenshot.png)
+![screenshot](./assets/images/screenshot.png)
 
 ## Description
 I've created a Weather Dashboard App that accesses the Open Weather App (a third-party API).  The goal was to access their data and functionality by making requests with specific parameters to a URL.
