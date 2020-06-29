@@ -65,7 +65,7 @@ function searchWeather(inputCity) {
 
       // UV forecast fetch
       fetch(
-        "http://api.openweathermap.org/data/2.5/uvi?appid=1db6310f555fa74480683e435e7419b5&q=&lat=" + response.coord.lat + "&lon=" + response.coord.lon
+        "https://api.openweathermap.org/data/2.5/uvi?appid=1db6310f555fa74480683e435e7419b5&q=&lat=" + response.coord.lat + "&lon=" + response.coord.lon
       )
 
         .then(function (uvResponse) {
@@ -98,7 +98,7 @@ function searchWeather(inputCity) {
 
       // get weather icon
       console.log(response.weather[0].icon);
-      var weatherIconUrl = "http://openweathermap.org/img/wn/" + response.weather[0].icon + '@2x.png';
+      var weatherIconUrl = "https://openweathermap.org/img/wn/" + response.weather[0].icon + '@2x.png';
       console.log(weatherIconUrl);
       var weatherIcon = document.createElement("IMG");
       weatherIcon.id = "weatherIcon";
